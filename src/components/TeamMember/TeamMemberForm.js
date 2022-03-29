@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { pickRandomColor } from './colors';
 import './TeamMember.css';
 
-const TeamMemberForm = () => {
+const TeamMemberForm = (props) => {
     const [color] = useState(pickRandomColor());
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -11,8 +11,7 @@ const TeamMemberForm = () => {
     // On form submit, add new member to our database and update team member list
     const onSubmit = event => {
         event.preventDefault();
-
-        console.log('Submitted form');
+        props.submitForm({firstName, lastName, title, favoriteColor: color});
     }
 
     return (
